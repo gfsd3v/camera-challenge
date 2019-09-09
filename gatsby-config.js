@@ -9,10 +9,6 @@ module.exports = {
     description: `Mieter Engel - Camera Challenge`,
     author: `Gabriel`
   },
-  proxy: {
-    prefix: "/api",
-    url: "http://localhost:3001"
-  },
   plugins: [
     {
       resolve: `gatsby-plugin-layout`,
