@@ -11,7 +11,7 @@ const ImageWrapper = styled.div`
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  margin: 3vh 0 3vh 0;
+  margin: 9vh 0 9vh 0;
   cursor: pointer;
   overflow: hidden;
 `;
@@ -28,6 +28,7 @@ const HiddenInput = styled.input`
 /**
  * @param {HTMLImageElement} image - Image File Object
  * @param {Object} crop - crop Object
+ * @returns base64 cropped image
  */
 const getCroppedImg = (image, crop) => {
   const canvas = document.createElement("canvas");
@@ -54,14 +55,16 @@ const getCroppedImg = (image, crop) => {
 };
 
 const ImageUpload = ({ confirmedImage, setConfirmedImage, ...props }) => {
+  // Base64 string from first upload
   const [src, setSrc] = React.useState(false);
+  // Setting the crop limits
   const [crop, setCrop] = React.useState({
     unit: "%",
     width: 100,
     height: 100
   });
+  // State that store the img html tag with the base64 as src
   const [imageRef, setImageRef] = React.useState(false);
-  const [imageBase64, setImageBase64] = React.useState(false);
 
   const handleChange = async event => {
     if (event.target.files && event.target.files.length > 0) {
@@ -77,23 +80,15 @@ const ImageUpload = ({ confirmedImage, setConfirmedImage, ...props }) => {
     setImageRef(image);
   };
 
+  // While the user is moving the cursor selecting the crop we store the crop dimensions
   const onCropChange = crop => {
     setCrop(crop);
   };
 
-  const makeClientCrop = crop => {
-    if (imageRef && crop.width && crop.height) {
-      const imageBase64 = getCroppedImg(imageRef, crop);
-      setImageBase64(imageBase64);
-    }
-  };
-
-  const onCropComplete = crop => {
-    makeClientCrop(crop);
-  };
-
   const handleCropConfirmation = () => {
-    if (imageBase64) {
+    if (imageRef && crop.width && crop.height) {
+      // Getting base64 cropped image
+      const imageBase64 = getCroppedImg(imageRef, crop);
       setConfirmedImage(imageBase64);
     } else {
       setConfirmedImage(src);
@@ -110,7 +105,6 @@ const ImageUpload = ({ confirmedImage, setConfirmedImage, ...props }) => {
                   src={src}
                   crop={crop}
                   onImageLoaded={onImageLoaded}
-                  onComplete={onCropComplete}
                   onChange={onCropChange}
                 />
                 <FloatingCircleButton onPress={handleCropConfirmation} />

@@ -17,5 +17,9 @@
       "autoFix": true
     }
   ],
-  "eslint.autoFixOnSave": true
+  "eslint.autoFixOnSave": true,
+  "cSpell.words": [
+    "apos",
+    "netlify"
+  ]
 }

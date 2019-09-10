@@ -1,5 +1,12 @@
 import React from "react";
 import styled from "styled-components";
+import { CircularProgress } from "@material-ui/core";
+
+const Loader = styled(CircularProgress)`
+  color: white !important;
+  width: 25px !important;
+  height: 25px !important;
+`;
 
 const ButtonWrapper = styled.div`
   cursor: ${props => props.cursor || "pointer"};
@@ -21,6 +28,7 @@ const ButtonWrapper = styled.div`
 
 const ButtonRoot = ({
   onPress = () => {},
+  loading,
   children,
   width,
   height,
@@ -51,7 +59,7 @@ const ButtonRoot = ({
       boxShadow={boxShadow}
       flex={flex}
     >
-      {children}
+      {loading ? <Loader /> : children}
     </ButtonWrapper>
   );
 };

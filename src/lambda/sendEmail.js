@@ -1,4 +1,5 @@
 require("dotenv").config();
+
 const nodemailer = require("nodemailer");
 const { google } = require("googleapis");
 const OAuth2 = google.auth.OAuth2;
@@ -23,11 +24,10 @@ exports.handler = function(event, context, callback) {
     });
   }
 
-  const data = JSON.parse(event.body);
+  const data = JSON.parse(event.body) || null;
 
   // Making sure we have all required data. Otherwise, return error.
   if (!data.name || !data.email || !data.base64Image) {
-    console.error(message);
     callback(null, {
       statusCode: 200,
       headers,
@@ -67,24 +67,26 @@ exports.handler = function(event, context, callback) {
       }
     });
   } catch (e) {
-    console.error(message);
+    console.error(e.message);
     callback(null, {
       statusCode: 424,
       headers,
       body: JSON.stringify({
-        status: "failed",
+        status: "failed at oauth2Client",
         message: e.message
       })
     });
   }
 
-  // Setting mail optiions.
+  // Setting mail options.
   const mailOptions = {
-    from: "gfsd3v@gmail.com",
+    from: '"Gabriel 👻" <gfsd3v@gmail.com>',
     to: "gfsd3v@gmail.com",
-    subject: "Node.js Email with Secure OAuth",
+    subject: `📫 New picture from ${
+      data.name
+    } - ${new Date().toLocaleString()}`,
     generateTextFromHTML: true,
-    html: "<b>test</b>"
+    html: `<h3>New image submitted by ${data.name}</h3><p>Check the image in the attachments, the user email is ${data.email}</p>`
   };
 
   try {
@@ -106,7 +108,7 @@ exports.handler = function(event, context, callback) {
       // Adding PDF Buffer to mail attachments
       mailOptions.attachments = [
         {
-          filename: "attachment.pdf",
+          filename: `${data.name}-${new Date().toLocaleString()}.pdf`,
           content: pdfData
         }
       ];
@@ -125,12 +127,12 @@ exports.handler = function(event, context, callback) {
     });
     pdf.end();
   } catch (e) {
-    console.error(message);
+    console.error(e.message);
     callback(null, {
       statusCode: 424,
       headers,
       body: JSON.stringify({
-        status: "failed",
+        status: "failed pdf step",
         message: e.message
       })
     });

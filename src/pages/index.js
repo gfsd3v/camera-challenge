@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Seo from "components/Seo";
 import Hero from "components/Hero";
 import Footer from "components/Footer";
-import MultiStepForm from "components/MultiStepForm";
+import ImageUploadForm from "components/ImageUploadForm";
 import Informations from "components/Informations";
 import Loader from "components/Loaders";
 import { defaultTheme } from "themes";
@@ -45,7 +45,7 @@ const IndexPage = () => {
       {isDesktop !== null ? (
         <>
           <Hero isDesktop={isDesktop}>
-            <MultiStepForm />
+            <ImageUploadForm />
             <Dash />
           </Hero>
           <Informations />
