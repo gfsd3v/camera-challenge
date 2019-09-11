@@ -44,6 +44,15 @@ const Infos = () => {
           </ParagraphText>
         </li>
         <li>
+          <SmallHeader justifyContent="flex-start">
+            Smoother Transitions
+          </SmallHeader>
+          <ParagraphText>
+            If I had more time I would implement a better Transition component
+            to make the components transition more fluid.
+          </ParagraphText>
+        </li>
+        <li>
           <SmallHeader justifyContent="flex-start">Multiple Images</SmallHeader>
           <ParagraphText>
             The user should be able to upload more than one image, the backend
