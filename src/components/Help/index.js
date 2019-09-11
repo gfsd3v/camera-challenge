@@ -27,7 +27,7 @@ const Help = () => {
         </li>
         <li>
           <ParagraphText>
-            Resize the image(optional) and press de check button when finished.
+            Resize the image(optional) and press the check button when finished.
           </ParagraphText>
         </li>
         <li>
