@@ -63,8 +63,16 @@ const SendImage = ({
       setLoading(true);
       try {
         const serverResponse = await ImageService.sendEmailWithImageAsPdf(data);
-
-        console.log(serverResponse);
+        if (serverResponse.status !== 200) {
+          dispatch({
+            type: "SHOW_SNACKBAR",
+            message:
+              "error sending the image to the server, please try again in a few seconds."
+          });
+        } else {
+          setLoading(false);
+          setCurrentStep(2);
+        }
       } catch (e) {
         console.log(e);
         dispatch({

@@ -30,7 +30,7 @@ const UserInfos = ({ setCurrentStep, setStepTitle, setData, ...props }) => {
   const dispatch = useDispatch();
 
   React.useEffect(() => {
-    setStepTitle("hi, tell me some of your infos");
+    setStepTitle("hello there!");
   }, []);
 
   const fieldsCheck = () => {

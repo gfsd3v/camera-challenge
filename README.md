@@ -1,39 +1,27 @@
 # MieterEngel coding challenge
 
-Welcome to the MieterEngel coding challenge! Your mission, should
-you accept it, is to build a page that our customers can use
-to take a picture of a page with their mobile phone and send the picture
-to us via email.
-For the frontend part of this work please use React, every other decision
-about which frameworks you use is up to you. The choice will only
-matter for the evaluation insofar as e. g. adding buggy external
-dependencies will also affect the stability of your code.
+I did a fully responsive web app where the user can either take a picture or upload a image, [`app in production`](https://nodejs.org/en/).
 
-## The fronted
-A layout idea for the frontend can be found [here](https://marvelapp.com/project/3366817/).
+## Improvement ideas
 
-## The backend
-The backend should send an email with the picture attached as a PDF to `coding-challenge@mieterengel.de`.
+- **Tests:** Didn't had the time to add the tests needed, the project could use some
+  basics Jest tests.
+- **Multiple Images:** The user should be able to upload more than one image, the backend function that transform the image to pdf is ready for this Functionality but I didn't had the time to do the frontend part of the Functionality.
+  should be documented.
+- **Grid Template:** I didn't had much time to think about the possibilities to implement the layout that I had in mind, but this kinda of layout would be better and cleaner using the CSS Grid feature, I ended up using the React State to change the order that the Components were rendered in which device(Mobile & Desktop).
 
-## What we will look for
+## Stack
 
-We will check for the following when evaluating the coding challenge:
-* __Functionality:__ The code should work and send out the email
-* __Code organization:__ The code should be organized in files,
-classes, functions, etc., based on the inherent structure of the
-features
-* __Code style:__ The code could should be easily readable
-* __Git commit structure:__ Whether git commits are named and
-structured meaningfully
-* __Stability:__ The software should not break if mistreated by
-customers
-* __Security:__ The code should be secured against common attacks
+- #### [`Gatsby`](https://www.gatsbyjs.org/)
+- #### [`Redux`](https://redux.js.org/)
+- #### [`Styled Components`](https://www.styled-components.com/)
+- #### [`OAuth2`](https://oauth.net/2/)
+- #### [`Netlify Lambda Functions`](https://www.netlify.com/docs/functions/) (Backend functions)
 
-There will be bonus points based on:
-* __Improvement ideas:__ For a list of things you would propose to
-add in the code if you had more time. This doesn't mean features, but
-e. g. documentation and tests.
-* __Documentation:__ If there is non-self-explanatory code, it
-should be documented
-* __Tests:__ If the code or parts that make sense are automatically
-tested.
+## Libraries & Resources
+
+- #### [`Material UI`](https://material-ui.com/)
+- #### [`Pdfkit`](https://pdfkit.org/)
+- #### [`Nodemailer`](https://nodemailer.com/about/)
+- #### [`React Image Crop`](https://github.com/DominicTobias/react-image-crop)
+- #### [`Jetpack Loader`](https://codepen.io/mr_alien/pen/FDLjg)

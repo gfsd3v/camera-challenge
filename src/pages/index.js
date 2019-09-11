@@ -4,7 +4,7 @@ import Seo from "components/Seo";
 import Hero from "components/Hero";
 import Footer from "components/Footer";
 import ImageUploadForm from "components/ImageUploadForm";
-import Informations from "components/Informations";
+import Infos from "components/Infos";
 import Loader from "components/Loaders";
 import { defaultTheme } from "themes";
 
@@ -24,6 +24,12 @@ const Dash = styled.div`
 const IndexPage = () => {
   const [isDesktop, setIsDesktop] = React.useState(null);
 
+  /*
+   * Using window.innerWidth to identify if is desktop
+   * and change the order that the component's
+   * are rendered in Hero component
+   * (Could be avoided if I used a grid layout)
+   */
   React.useEffect(() => {
     const updatePredicate = () => {
       setIsDesktop(window.innerWidth > 1010);
@@ -35,6 +41,23 @@ const IndexPage = () => {
     };
   }, []);
 
+  const contentHandler = () => {
+    if (isDesktop !== null) {
+      return (
+        <React.Fragment>
+          <Hero isDesktop={isDesktop}>
+            <ImageUploadForm />
+            <Dash />
+          </Hero>
+          <Infos />
+          <Footer />
+        </React.Fragment>
+      );
+    } else {
+      return <Loader />;
+    }
+  };
+
   return (
     <>
       <Seo
@@ -42,18 +65,7 @@ const IndexPage = () => {
         description={"Mieter Engel - Camera Challenge."}
         keywords={["code", "challenge"]}
       />
-      {isDesktop !== null ? (
-        <>
-          <Hero isDesktop={isDesktop}>
-            <ImageUploadForm />
-            <Dash />
-          </Hero>
-          <Informations />
-          <Footer />
-        </>
-      ) : (
-        <Loader />
-      )}
+      {contentHandler()}
     </>
   );
 };

@@ -14,7 +14,7 @@ export const DefaultButton = ({ children, onPress, ...props }) => {
       color="#fff"
       boxShadow="0 1px 3px rgba(0, 0, 0, 0.3)"
       borderRadius="18px"
-      margin="30px 0 10px 0"
+      margin="5vh 0 0 0"
       {...props}
     >
       {children}

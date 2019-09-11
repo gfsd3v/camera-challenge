@@ -17,9 +17,9 @@ const Success = ({ setStepTitle, ...props }) => {
 
   return (
     <Wrapper>
-      <Header margin="18px 0 18px 0">success!</Header>
+      <Header margin="10vh 0 0 0">success!</Header>
       <ParagraphText margin="25px 0 25px 0" textAlign="center">
-        your image was successfully send
+        your image was successfully sent
         <br />
         we&apos;ll be in touch soon.
       </ParagraphText>

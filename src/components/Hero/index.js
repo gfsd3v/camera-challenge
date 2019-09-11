@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import LazyImage from "components/LazyImage";
 import { defaultTheme } from "themes";
-import Transition from "components/Transition";
 
 const Wrapper = styled.section`
   display: flex;
@@ -32,19 +31,25 @@ const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  flex: 1%;
+  flex: 1;
   justify-content: space-evenly;
   padding: 0;
 `;
 
 const Hero = ({ isDesktop, children, ...props }) => {
-  return (
-    <Transition transitionTime={0.25} animation="fadeIn">
-      {isDesktop ? (
+  /*
+   * Check if is desktop to change order of render
+   * (Could be avoided if I used a grid layout)
+   */
+  const contentHandler = () => {
+    if (isDesktop) {
+      return (
         <Wrapper>
           <ContentWrapper>{children}</ContentWrapper>
         </Wrapper>
-      ) : (
+      );
+    } else {
+      return (
         <React.Fragment>
           <Wrapper>
             <Logo>
@@ -53,9 +58,11 @@ const Hero = ({ isDesktop, children, ...props }) => {
           </Wrapper>
           <ContentWrapper>{children}</ContentWrapper>
         </React.Fragment>
-      )}
-    </Transition>
-  );
+      );
+    }
+  };
+
+  return <React.Fragment>{contentHandler()}</React.Fragment>;
 };
 
 export default Hero;

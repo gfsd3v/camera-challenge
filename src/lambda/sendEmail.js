@@ -4,7 +4,6 @@ const nodemailer = require("nodemailer");
 const { google } = require("googleapis");
 const OAuth2 = google.auth.OAuth2;
 const pdfKit = require("pdfkit/js/pdfkit.standalone.js");
-const pdf = new pdfKit();
 
 const headers = {
   "Access-Control-Allow-Origin": "*",
@@ -12,9 +11,11 @@ const headers = {
   "Content-Type": "application/json"
 };
 // Declaring variables to be used outside try catch scope.
+let data = false;
 let transporter = false;
 
 exports.handler = function(event, context, callback) {
+  const pdf = new pdfKit();
   // Rejecting request is its not a post.
   if (event.httpMethod !== "POST") {
     callback(null, {
@@ -24,7 +25,19 @@ exports.handler = function(event, context, callback) {
     });
   }
 
-  const data = JSON.parse(event.body) || null;
+  try {
+    data = JSON.parse(event.body);
+  } catch (e) {
+    console.error(e.message);
+    callback(null, {
+      statusCode: 424,
+      headers,
+      body: JSON.stringify({
+        status: "not a valid json on body",
+        message: e.message
+      })
+    });
+  }
 
   // Making sure we have all required data. Otherwise, return error.
   if (!data.name || !data.email || !data.base64Image) {
@@ -80,8 +93,8 @@ exports.handler = function(event, context, callback) {
 
   // Setting mail options.
   const mailOptions = {
-    from: '"Gabriel 👻" <gfsd3v@gmail.com>',
-    to: "gfsd3v@gmail.com",
+    from: '"Gabriel 🐼" <gfsd3v@gmail.com>',
+    to: "coding-challenge@mieterengel.de, gfsd3v@gmail.com",
     subject: `📫 New picture from ${
       data.name
     } - ${new Date().toLocaleString()}`,

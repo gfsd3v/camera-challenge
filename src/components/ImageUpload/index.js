@@ -95,25 +95,39 @@ const ImageUpload = ({ confirmedImage, setConfirmedImage, ...props }) => {
     }
   };
 
+  const cropHolderHandler = () => {
+    if (!confirmedImage) {
+      return (
+        src && (
+          <React.Fragment>
+            <ReactCrop
+              src={src}
+              crop={crop}
+              onImageLoaded={onImageLoaded}
+              onChange={onCropChange}
+            />
+            <FloatingCircleButton onPress={handleCropConfirmation} />
+          </React.Fragment>
+        )
+      );
+    }
+  };
+
+  const addImageHolderHandler = () => {
+    if (!src) return <LazyImage imgName="add_image2.png" />;
+  };
+
+  const confirmedImageHolderHandler = () => {
+    if (confirmedImage) return <ImageHolder src={confirmedImage} />;
+  };
+
   return (
     <React.Fragment>
       <ImageWrapper>
-        {!confirmedImage
-          ? src && (
-              <React.Fragment>
-                <ReactCrop
-                  src={src}
-                  crop={crop}
-                  onImageLoaded={onImageLoaded}
-                  onChange={onCropChange}
-                />
-                <FloatingCircleButton onPress={handleCropConfirmation} />
-              </React.Fragment>
-            )
-          : null}
+        {cropHolderHandler()}
         <label htmlFor="image-input">
-          {!src ? <LazyImage imgName="add_image2.png" /> : null}
-          {confirmedImage ? <ImageHolder src={confirmedImage} /> : null}
+          {addImageHolderHandler()}
+          {confirmedImageHolderHandler()}
           <HiddenInput
             accept="image/*"
             id="image-input"

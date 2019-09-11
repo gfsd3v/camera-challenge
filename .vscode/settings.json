@@ -18,8 +18,5 @@
     }
   ],
   "eslint.autoFixOnSave": true,
-  "cSpell.words": [
-    "apos",
-    "netlify"
-  ]
+  "cSpell.words": ["apos", "didn", "netlify"]
 }

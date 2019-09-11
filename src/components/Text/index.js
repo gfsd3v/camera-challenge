@@ -54,7 +54,7 @@ export const SmallHeader = ({ children, ...props }) => {
   );
 };
 
-export const Header = ({ children, props }) => {
+export const Header = ({ children, ...props }) => {
   return (
     <TextRoot
       color={defaultTheme.color.primary}
