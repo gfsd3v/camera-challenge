@@ -40,26 +40,27 @@ const Infos = () => {
           <SmallHeader justifyContent="flex-start">Tests</SmallHeader>
           <ParagraphText>
             Didn&apos;t had the time to add the tests needed, the project could
-            use some basics Jest tests.
+            use some basic Jest tests.
           </ParagraphText>
         </li>
         <li>
           <SmallHeader justifyContent="flex-start">Multiple Images</SmallHeader>
           <ParagraphText>
             The user should be able to upload more than one image, the backend
-            function that transform the image to pdf is ready for this
-            Functionality but I didn&apos;t had the time to do the frontend part
-            of the Functionality. should be documented.
+            function that transform the image to pdf is ready for this but I
+            didn&apos;t had the time to do the frontend part of the
+            Functionality.
           </ParagraphText>
         </li>
         <li>
           <SmallHeader justifyContent="flex-start">Grid Template</SmallHeader>
           <ParagraphText>
-            I didn&apos;t had much time to think about the possibilities to
-            implement the layout that I had in mind, but this kinda of layout
-            would be better and cleaner using the CSS Grid feature, I ended up
-            using the React State to change the order that the Components were
-            rendered in which device(Mobile &amp; Desktop).
+            I didn&apos;t had much time to think about the ways that I could
+            implement the layout that I had in mind, I ended up using the React
+            State to change the order that the Components were rendered in each
+            device(Mobile & Desktop) and that was not the best approach for the
+            situation, this kinda of layout would be better and cleaner using
+            the CSS Grid feature.
           </ParagraphText>
         </li>
       </CustomUl>
