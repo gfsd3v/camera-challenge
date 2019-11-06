@@ -1,4 +1,4 @@
-# MieterEngel coding challenge
+# Image to PDF email sender
 
 I did a fully responsive web app where the user can either take a picture or upload a image, [`app in production`](https://camerachallenge.netlify.com/).
 
