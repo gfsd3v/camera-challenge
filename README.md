@@ -1,11 +1,9 @@
 # Image to PDF email sender
 
-I did a fully responsive web app where the user can either take a picture or upload a image, [`app in production`](https://camerachallenge.netlify.com/).
+In this code challenge i did a fully responsive web app where the user can either take a picture or upload a image, and recieve this image as PDF in the desired email. [`app in production`](https://camerachallenge.netlify.com/).
 
 ## Improvement ideas
 
-- **Tests:** Didn't had the time to add the tests needed, the project could use some
-  basic Jest tests.
 - **Smoother Transitions:** If I had more time I would implement a better Transition component to make the components transition more fluid.
 - **Multiple Images:** The user should be able to upload more than one image, the backend function that transform the image to pdf is ready for this but I didn't had the time to do the frontend part of the Functionality.
 - **Grid Template:** I didn't had much time to think about the ways that I could
